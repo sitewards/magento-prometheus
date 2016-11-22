@@ -109,6 +109,7 @@ Thanks
 ------
 
 - Matthew Beane (https://twitter.com/aepod)
+- Winston Nolan
 
 Contributing
 ------------
