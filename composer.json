@@ -3,7 +3,7 @@
     "description": "Expose some service level Magento metrics on Prometheus",
     "version": "[1.0.0]: Current stable version. Start at 1.0.0",
     "type": "library",
-    "homepage": "https://www.andrewhowden.com/",
+    "homepage": "https://github.com/littlemanco/magento-prometheus/",
     "license": "Apache-2.0",
     "authors": [
         {
@@ -31,11 +31,11 @@
     "bin": {
     },
     "archive": {
-        "exclude": {
+        "exclude": [
             "test",
             "hack",
             "hooks",
             ".arclint"
-        }
+        ]
     }
 }
