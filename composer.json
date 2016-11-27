@@ -1,8 +1,7 @@
 {
     "name": "littlemanco/magento-prometheus",
     "description": "Expose some service level Magento metrics on Prometheus",
-    "version": "[1.0.0]: Current stable version. Start at 1.0.0",
-    "type": "library",
+    "type": "magento-module",
     "homepage": "https://github.com/littlemanco/magento-prometheus/",
     "license": "Apache-2.0",
     "authors": [
