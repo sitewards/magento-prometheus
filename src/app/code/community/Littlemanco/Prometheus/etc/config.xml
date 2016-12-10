@@ -19,11 +19,9 @@ limitations under the License.
 @license  apache-2.0
 -->
 <config>
-  <modules>
-    <Littlemanco_Prometheus>
-      <active>true</active>
-      <codePool>community</codePool>
-      <depends />
-    </Littlemanco_Prometheus>
-  </modules>
+    <modules>
+        <Littlemanco_Prometheus>
+            <version>1.0.0</version>
+        </Littlemanco_Prometheus>
+    </modules>
 </config>
