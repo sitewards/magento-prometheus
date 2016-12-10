@@ -24,4 +24,16 @@ limitations under the License.
             <version>1.0.0</version>
         </Littlemanco_Prometheus>
     </modules>
+    <globals>
+        <models>
+            <littlemanco_prometheus>
+                <class>Littlemanco_Prometheus_Model</class>
+            </littlemanco_prometheus>
+        </models>
+        <helpers>
+            <littlemanco_prometheus>
+                <class>Littlemanco_Prometheus_Helper</class>
+            </littlemanco_prometheus>
+        </helpers>
+    </globals>
 </config>
