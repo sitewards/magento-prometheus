@@ -19,13 +19,17 @@
  * @license  apache-2.0
  */
 
-Interface Littlemanco_Prometheus_Interface_Counter
+class Littlemanco_Prometheus_Model_Metrics_CronExecutionTimestamp
+    extends Littlemanco_Prometheus_Model_Metrics_Abstract
+    implements Littlemanco_Prometheus_Interface_Counter
 {
     /**
-     * Add an additional value to the increment metric
+     * Set the timestamp of the cronjob
      *
-     * @param int $iValue The value to add to the counter
-     * @return Littlemanco_Prometheus_Interface_Gauge
+     * @param int $iValue
+     * @return Littlemanco_Prometheus_Model_Metrics_CronExecutionTimestamp
      */
-    public function increment($iValue);
+    public function increment($iValue)
+    {
+    }
 }

@@ -19,7 +19,27 @@
  * @license  apache-2.0
  */
 
-class Littlemanco_Prometheus_Model_Metrics
+class Littlemanco_Prometheus_Model_Metrics_Abstract
 {
+    const XML_PATH_TEMPLATE = 'metrics/s%';
 
+    /**
+     * @var string
+     */
+    private $sMetricName;
+
+    /**
+     * @var string
+     */
+    private $sMetricType;
+
+    /**
+     * @var string
+     */
+    private $sMetricHelp;
+
+    protected function __construct()
+    {
+        $oConfig = Mage::getConfig(sprintf(self::XML_PATH_TEMPLATE, $this->sMetricHelp));
+    }
 }

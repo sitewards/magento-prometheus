@@ -22,10 +22,10 @@
 Interface Littlemanco_Prometheus_Interface_Gauge
 {
     /**
-     * Add an additional value to the increment metric
+     * Sets the gauge value to a given value.
      *
      * @param int $iValue The value to add to the counter
-     * @return Littlemanco_Prometheus_Interface_Gauge
+     * @return Littlemanco_Prometheus_Interface_Counter
      */
-    public function increment($iValue);
+    public function set($iValue);
 }

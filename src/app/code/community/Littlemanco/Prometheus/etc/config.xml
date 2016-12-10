@@ -36,4 +36,10 @@ limitations under the License.
             </littlemanco_prometheus>
         </helpers>
     </globals>
+    <metrics>
+        <magento_cron_execution_timestamp>
+            <type>counter</type>
+            <help>The unix timestamp of the last cron execution</help>
+        </magento_cron_execution_timestamp>
+    </metrics>
 </config>
