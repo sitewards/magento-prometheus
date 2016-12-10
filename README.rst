@@ -5,19 +5,14 @@ Project Goals
 '''''''''''''
 
 1. Expose certain limited metrics about a store for use in diagnosing an issue
-2. Provide a model to extend the metrics exposed to write arbitrary additional metrics to the endpoint 
+2. Provide a model to extend the metrics exposed to write arbitrary additional metrics to the endpoint
 
 This project is intended to make it easier to introspect one, or several running Magento stores.
 
 Scope
 """""
 
-There are two sets of metrics that we're interested in: 
-
-  - Service level metrics
-  - Instance level metrics
-
-Instance level metrics are things that matter about exactly this machine (for example, memory usage). Service level metrics are things that matter about Magento more generally, like number of orders or sessions.
+All metrics should be collected on a per-instance basis, rather than for the health of a service overall. That should be calculated by querying the aggregate of all such collections.
 
 Similar Work
 ''''''''''''
@@ -96,12 +91,34 @@ That's no good! Create an issue, and I'll see about making it configurable.
 Extending
 ---------
 
-Todo: Write this out. Loosely, the goal is to have this similar to Magento cron - declare some configuration that things can hook into. 
+This extension uses a pluggable, provider model similar to the Magento cron implementation. First, declare a set of configuration as follows:
+
+.. Code:: ReST
+
+  <config>
+    <!--
+      <global>
+        ... The rest of your configuration
+      < /global>
+    -->
+    <metrics>
+      <magento_cron_execution_timestamp>
+        <!-- Prometheus has four types of metrics:
+               - "counter" (something that only increments. For example, number of orders)
+               - "gaudge" (something that goes up or down. For example, number of visitors on website) -->
+        <type>counter</type>
+        <!-- A small amount of text to indicate what the metric is for -->
+        <help>The unix timestamp of the last cron execution</help>
+      </magento_cron_execution_timestamp>
+    </metrics>
+  </config>
+
+Todo: Write this out. Loosely, the goal is to have this similar to Magento cron - declare some configuration that things can hook into.
 
 Ongoing Support
 ---------------
 
-There will be none. Suggest that if this interests you, you fork and maintain it. Being brutally honest, my interest is fleeting, and unless there's professional sponsorship I won't carry this longer then my attention span holds out. 
+There will be none. Suggest that if this interests you, you fork and maintain it. Being brutally honest, my interest is fleeting, and unless there's professional sponsorship I won't carry this longer then my attention span holds out.
 
 For me, this is a learning experience with Magento and Kubernetes.
 
