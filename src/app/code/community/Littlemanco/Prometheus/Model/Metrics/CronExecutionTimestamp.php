@@ -23,6 +23,8 @@ class Littlemanco_Prometheus_Model_Metrics_CronExecutionTimestamp
     extends Littlemanco_Prometheus_Model_Metrics_Abstract
     implements Littlemanco_Prometheus_Interface_Counter
 {
+    const METRIC_NAME = '';
+
     /**
      * Set the timestamp of the cronjob
      *

@@ -19,29 +19,10 @@
  * @license  apache-2.0
  */
 
-class Littlemanco_Prometheus_Model_Metrics_Abstract
+/**
+ * Responsible for processing metrics as a result of events dispatched by Magento
+ */
+class Littlemanco_Prometheus_Model_Observer
 {
-    const XML_PATH_TEMPLATE = 'metrics/s%';
 
-    /**
-     * @var string
-     */
-    private $sMetricName;
-
-    /**
-     * @var string
-     */
-    private $sMetricType;
-
-    /**
-     * @var string
-     */
-    private $sMetricHelp;
-
-    protected function __construct()
-    {
-        $oConfig = Mage::getConfig(sprintf(self::XML_PATH_TEMPLATE, $this->sMetricName));
-
-        // magento_cron_execution_timestamp
-    }
 }
