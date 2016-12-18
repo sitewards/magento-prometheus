@@ -19,24 +19,10 @@
  * @license  apache-2.0
  */
 
-class Littlemanco_Prometheus_Model_Metrics_CronExecutionTimestamp
-    extends Littlemanco_Prometheus_Model_Metrics_Abstract
-    implements Littlemanco_Prometheus_Interface_Counter
+/**
+ * Exception that indicates the metric model was invalid, and cannot be used.
+ */
+class Littlemanco_Prometheus_Exception_InvalidMetric extends Exception
 {
-    const S_METRIC_NAME = 'cron_execution_timestamp';
 
-    /**
-     * @var string
-     */
-    protected $sMetricName = self::S_METRIC_NAME;
-
-    /**
-     * Set the timestamp of the cronjob
-     *
-     * @param int $iValue
-     * @return Littlemanco_Prometheus_Model_Metrics_CronExecutionTimestamp
-     */
-    public function increment($iValue)
-    {
-    }
 }

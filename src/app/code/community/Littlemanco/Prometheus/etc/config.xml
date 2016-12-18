@@ -24,7 +24,7 @@ limitations under the License.
             <version>1.0.0</version>
         </Littlemanco_Prometheus>
     </modules>
-    <globals>
+    <global>
         <models>
             <littlemanco_prometheus>
                 <class>Littlemanco_Prometheus_Model</class>
@@ -35,11 +35,11 @@ limitations under the License.
                 <class>Littlemanco_Prometheus_Helper</class>
             </littlemanco_prometheus>
         </helpers>
-    </globals>
+    </global>
     <metrics>
-        <magento_cron_execution_timestamp>
+        <cron_execution_timestamp>
             <type>counter</type>
             <help>The unix timestamp of the last cron execution</help>
-        </magento_cron_execution_timestamp>
+        </cron_execution_timestamp>
     </metrics>
 </config>
