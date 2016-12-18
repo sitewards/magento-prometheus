@@ -42,4 +42,24 @@ limitations under the License.
             <help>The unix timestamp of the last cron execution</help>
         </cron_execution_timestamp>
     </metrics>
+    <crontab>
+        <events>
+            <default>
+                <observers>
+                    <cron_observer>
+                        <class>littlemanco_prometheus/observer</class>
+                        <method>checkpointCron</method>
+                    </cron_observer>
+                </observers>
+            </default>
+            <always>
+                <observers>
+                    <cron_observer>
+                        <class>littlemanco_prometheus/observer</class>
+                        <method>checkpointCron</method>
+                    </cron_observer>
+                </observers>
+            </always>
+        </events>
+    </crontab>
 </config>

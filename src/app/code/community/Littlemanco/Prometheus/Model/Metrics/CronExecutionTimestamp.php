@@ -38,5 +38,6 @@ class Littlemanco_Prometheus_Model_Metrics_CronExecutionTimestamp
      */
     public function increment($iValue)
     {
+        return $this;
     }
 }

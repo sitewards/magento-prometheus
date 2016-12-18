@@ -24,5 +24,8 @@
  */
 class Littlemanco_Prometheus_Model_Observer
 {
-
+    public function checkpointCron(Varien_Event_Observer $event)
+    {
+        Mage::getModel('littlemanco_prometheus/metrics_cronExecutionTimestamp')->increment(now());
+    }
 }
