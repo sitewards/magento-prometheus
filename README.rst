@@ -105,7 +105,7 @@ When creating a metric, the following additional PHPDoc tags are useful:
 
 ::
 
-    @labels label_a,label_b |
+    @labels label_a,label_b | The labels that should be updated for this metric
 
 Ongoing Support
 ---------------
@@ -126,7 +126,7 @@ Contributing
 Contributions are always welcome! Nothing is too small, and the best place to start is to open an issue.
 
 References
------------
+----------
 
 .. [lang] Lingoes.net,. (2015). Language Code Table. Retrieved 4 June 2015, from http://www.lingoes.net/en/translator/langcode.htm
 .. [FIG9] GitHub, (2015). Proposed: security disclosure publication. Retrieved 15 May 2016, from https://github.com/php-fig/fig-standards/blob/master/proposed/security-disclosure-publication.md
