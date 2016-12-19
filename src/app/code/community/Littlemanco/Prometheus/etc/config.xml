@@ -28,7 +28,11 @@ limitations under the License.
         <models>
             <littlemanco_prometheus>
                 <class>Littlemanco_Prometheus_Model</class>
+                <resourceModel>littlemanco_prometheus_resource</resourceModel>
             </littlemanco_prometheus>
+            <littlemanco_prometheus_resource>
+                <class>Littlemanco_Prometheus_Model_Resource</class>
+            </littlemanco_prometheus_resource>
         </models>
         <helpers>
             <littlemanco_prometheus>
@@ -36,6 +40,17 @@ limitations under the License.
             </littlemanco_prometheus>
         </helpers>
     </global>
+    <frontend>
+        <routers>
+            <littlemanco_prometheus>
+                <use>standard</use>
+                <args>
+                    <module>Littlemanco_Prometheus</module>
+                    <frontName>prometheus</frontName>
+                </args>
+            </littlemanco_prometheus>
+        </routers>
+    </frontend>
     <crontab>
         <events>
             <default>
