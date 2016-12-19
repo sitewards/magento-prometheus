@@ -31,6 +31,6 @@ class Littlemanco_Prometheus_Model_Metrics_Abstract
      */
     protected function getResource()
     {
-        return Mage::getResourceSingleton('prometheus_littlemanco/metrics');
+        return Mage::getResourceSingleton('littlemanco_prometheus/metrics');
     }
 }
