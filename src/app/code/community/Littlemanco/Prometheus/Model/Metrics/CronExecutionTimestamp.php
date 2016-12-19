@@ -19,25 +19,33 @@
  * @license  apache-2.0
  */
 
-class Littlemanco_Prometheus_Model_Metrics_CronExecutionTimestamp
-    extends Littlemanco_Prometheus_Model_Metrics_Abstract
-    implements Littlemanco_Prometheus_Interface_Counter
+/**
+ * Sets the current execution time of the cron job.
+ *
+ * @labels none
+ */
+class Littlemanco_Prometheus_Model_Metrics_CronExecutionTimestamp extends Littlemanco_Prometheus_Model_Metrics_Abstract
 {
     const S_METRIC_NAME = 'cron_execution_timestamp';
+    const S_METRIC_HELP = '';
 
-    /**
-     * @var string
-     */
-    protected $sMetricName = self::S_METRIC_NAME;
-
-    /**
-     * Set the timestamp of the cronjob
-     *
-     * @param int $iValue
-     * @return Littlemanco_Prometheus_Model_Metrics_CronExecutionTimestamp
-     */
-    public function increment($iValue)
+    public function __construct()
     {
-        return $this;
+        $this->getResource()
+            ->registerGauge(
+                self::S_METRIC_NAMESPACE,
+                self::S_METRIC_NAME,
+                self::S_METRIC_HELP
+            );
+    }
+
+    /**
+     * Sets the time for a given metric
+     */
+    public function update()
+    {
+        $this->getResource()
+            ->getGauge(self::S_METRIC_NAMESPACE, self::S_METRIC_NAME)
+            ->set(time());
     }
 }

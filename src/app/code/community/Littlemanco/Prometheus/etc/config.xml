@@ -36,12 +36,6 @@ limitations under the License.
             </littlemanco_prometheus>
         </helpers>
     </global>
-    <metrics>
-        <cron_execution_timestamp>
-            <type>counter</type>
-            <help>The unix timestamp of the last cron execution</help>
-        </cron_execution_timestamp>
-    </metrics>
     <crontab>
         <events>
             <default>

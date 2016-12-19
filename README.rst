@@ -91,29 +91,21 @@ That's no good! Create an issue, and I'll see about making it configurable.
 Extending
 ---------
 
-This extension uses a pluggable, provider model similar to the Magento cron implementation. First, declare a set of configuration as follows:
+The extension is a thin wrapper around the PHP library. However, to create a new metric, create a class as follows:
 
-.. Code:: ReST
+::
+    Todo: That
 
-  <config>
-    <!--
-      <global>
-        ... The rest of your configuration
-      < /global>
-    -->
-    <metrics>
-      <magento_cron_execution_timestamp>
-        <!-- Prometheus has four types of metrics:
-               - "counter" (something that only increments. For example, number of orders)
-               - "gaudge" (something that goes up or down. For example, number of visitors on website) -->
-        <type>counter</type>
-        <!-- A small amount of text to indicate what the metric is for -->
-        <help>The unix timestamp of the last cron execution</help>
-      </magento_cron_execution_timestamp>
-    </metrics>
-  </config>
+Metrics are singletons, and fetching a model twice will break. Fetch your singleton as follows:
 
-Todo: Write this out. Loosely, the goal is to have this similar to Magento cron - declare some configuration that things can hook into.
+::
+    Todo: That
+
+When creating a metric, the following additional PHPDoc tags are useful:
+
+::
+
+    @labels label_a,label_b |
 
 Ongoing Support
 ---------------

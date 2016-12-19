@@ -24,8 +24,11 @@
  */
 class Littlemanco_Prometheus_Model_Observer
 {
+    /**
+     * Updates the cron model with the current timestamp
+     */
     public function checkpointCron(Varien_Event_Observer $event)
     {
-        Mage::getModel('littlemanco_prometheus/metrics_cronExecutionTimestamp')->increment(now());
+        Mage::getSingleton('littlemanco_prometheus/metrics_cronExecutionTimestamp')->update(now());
     }
 }

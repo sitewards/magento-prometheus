@@ -19,13 +19,13 @@
  * @license  apache-2.0
  */
 
-Interface Littlemanco_Prometheus_Interface_Counter
+Interface Littlemanco_Prometheus_Interface_Metric
 {
-    /**
-     * Add an additional value to the increment metric
-     *
-     * @param int $iValue The value to add to the counter
-     * @return Littlemanco_Prometheus_Interface_Gauge
-     */
-    public function increment($iValue);
+    public function getNamepace();
+
+    public function getName();
+
+    public function getHelp();
+
+    public function getType();
 }

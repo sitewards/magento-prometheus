@@ -19,13 +19,29 @@
  * @license  apache-2.0
  */
 
-Interface Littlemanco_Prometheus_Interface_Gauge
+use Prometheus\CollectorRegistry;
+use Prometheus\Storage\APC;
+
+/**
+ * @todo: Implement conditional resource models based on configuration. Redis is super common in Magento, there's no
+ * reason we can't persist there also.
+ *
+ * Not a high priority.
+ */
+class Littlemanco_Prometheus_Model_Resource_CollectorRegistry extends CollectorRegistry
 {
     /**
-     * Sets the gauge value to a given value.
-     *
-     * @param int $iValue The value to add to the counter
-     * @return Littlemanco_Prometheus_Interface_Counter
+     * @var Prometheus\Storage\Adapter
      */
-    public function set($iValue);
+    private $oStorageAdapter;
+
+    /**
+     * Initialize the resource model with a metric adapter
+     */
+    public function __construct()
+    {
+        $this->oStorageAdapter = new APC();
+
+        parent::__construct($this->oStorageAdapter);
+    }
 }
