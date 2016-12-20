@@ -40,6 +40,18 @@ limitations under the License.
             </littlemanco_prometheus>
         </helpers>
     </global>
+    <adminhtml>
+        <events>
+            <adminhtml_cache_refresh_type>
+                <observers>
+                    <metrics_observer>
+                        <class>littlemanco_prometheus/observer</class>
+                        <method>checkpointCache</method>
+                    </metrics_observer>
+                </observers>
+            </adminhtml_cache_refresh_type>
+        </events>
+    </adminhtml>
     <frontend>
         <routers>
             <littlemanco_prometheus>

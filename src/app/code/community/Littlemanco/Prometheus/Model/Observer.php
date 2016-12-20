@@ -34,4 +34,15 @@ class Littlemanco_Prometheus_Model_Observer
     {
         Mage::getSingleton('littlemanco_prometheus/metrics_cronExecutionTimestamp')->update(now());
     }
+
+    /**
+     * Increments the number of times a cache has been flushed. Cache is determined based on the data in the event.
+     *
+     * @param Varien_Event_Observer $oEvent
+     * @return void
+     */
+    public function checkpointCache(Varien_Event_Observer $oEvent)
+    {
+        Mage::getSingleton('littlemanco_prometheus/metrics_cacheFlushTotal')->increment($oEvent->getType());
+    }
 }
