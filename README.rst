@@ -55,23 +55,25 @@ Magento  Compatibility
 ===== ===== ===== ===== ===== =====
 
 Installation
--------------
+------------
 
-Todo: Fill this out
+The recommended way of installing this extension is via Composer. If this is new to you, you can read more at the
+following URL:
 
-Add the satis repository
+https://github.com/Cotya/magento-composer-installer
 
-    .. code::
-    {
-       "repositories": [
-           {
-               "type": "composer",
-               "url": "https://example-com"
-           }
-       ]
-    }
+This extension is available via Packagist. You can install it with composer by undertaking the following command:
 
-Do a thing
+::
+
+    $ composer require littlemanco/magento-prometheus
+
+Note: To use it, you will need to ensure that the composer autoloader is available to Magento. This package recommends
+the following extension to do this:
+
+https://github.com/fontis/composer-autoloader
+
+That's it! You're away.
 
 Usage
 -----
