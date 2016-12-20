@@ -27,7 +27,7 @@
 class Littlemanco_Prometheus_Model_Metrics_CronExecutionTimestamp extends Littlemanco_Prometheus_Model_Metrics_Abstract
 {
     const S_METRIC_NAME = 'cron_execution_timestamp';
-    const S_METRIC_HELP = '';
+    const S_METRIC_HELP = 'The unix timestamp of the last cron execution';
 
     public function __construct()
     {
