@@ -61,6 +61,12 @@ The following is the design spec for each metric. As of now, none are implemente
 | magento_customer_login_total         |             | A count of the number of times a Magento user has logged in             | Counter        | store_code   |
 | magento_promotion_code_usage_total   |             | A count of the number of times promo codes have been used               | Counter        | code         |
 
+### Additional possible metric candidates
+
+- No. product saves
+- MySQL latency
+- Redis latency
+
 ## References
 
 [1] - https://www.prometheus.io/docs/practices/instrumentation
