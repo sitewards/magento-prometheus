@@ -46,7 +46,7 @@ limitations under the License.
                 <use>standard</use>
                 <args>
                     <module>Littlemanco_Prometheus</module>
-                    <frontName>prometheus</frontName>
+                    <frontName>healthz</frontName>
                 </args>
             </littlemanco_prometheus>
         </routers>

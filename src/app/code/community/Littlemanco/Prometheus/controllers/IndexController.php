@@ -21,7 +21,7 @@
 
 use Prometheus\RenderTextFormat;
 
-class Littlemanco_Prometheus_MetricController extends Mage_Core_Controller_Front_Action
+class Littlemanco_Prometheus_IndexController extends Mage_Core_Controller_Front_Action
 {
     /**
      * Renders the Magento metrics
