@@ -57,7 +57,7 @@ class Littlemanco_Prometheus_Model_Observer
      */
     public function checkpointIndex(Varien_Event_Observer $oEvent)
     {
-        $sName = $oEvent->getEventName();
+        $sName = $oEvent->getEvent()->getName();
         $sCode = str_replace(self::S_INDEX_EVENT_PREFIX, null, $sName);
 
         Mage::getSingleton('littlemanco_prometheus/metrics_indexerReindexTotal')->increment($sCode);
