@@ -46,13 +46,13 @@ Where a metric is store specific, apply the store_code label to it with the stor
 The following is the design spec for each metric. As of now, none are implemented. 
 
 | Metric                               | Implemented | What it means                                                           | Type of metric | Labels       | 
-|--------------------------------------|-------------| -------------------------------------------------------------------------|----------------|--------------|
+|--------------------------------------|-------------| ------------------------------------------------------------------------|----------------|--------------|
 | magento_cron_execution_timestamp     | Yes         | The unix timestamp of the last cron execution                           | Gauge          |              |
 | magento_cron_queue_length            |             | The number of cron jobs that are due for processing in Magento          | Guadge (0,)    |              |
 | magento_indexer_status_ready         |             | Whether the indexer is "ready", or needs reindexing                     | Gaudge (0,1)   | indexer_code |
 | magento_indexer_reindex_total        |             | A count of the number of times the indexer has been reindexed           | Counter        | indexer_code |
 | magento_cache_status_enabled         |             | Whether the cache is enabled and valid                                  | Guadge (0,1)   | cache_type   |
-| magento_cache_flush_total            |             | A count of the number of cache flushes                                  | Counter        | cache_type   |
+| magento_cache_flush_total            | Yes         | A count of the number of cache flushes                                  | Counter        | cache_type   |
 | magento_orders_completed_total       |             | A count of the number of completed orders                               | Counter        | store_code   |
 | magento_orders_shipped_total         |             | A count of the number of shipped orders                                 | Counter        | store_code   |
 | magento_orders_returns_total         |             | A count of the number of returned orders                                | Counter        | store_code   |
