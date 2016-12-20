@@ -24,6 +24,9 @@
     },
     "require-dev": {
     },
+    "suggest": {
+        "fontis/composer-autoloader": "Allows the use of the third party prometheus library with Magento"
+    },
     "autoload": {
         "psr-4": {
             "littlemanco\\": "src/"
