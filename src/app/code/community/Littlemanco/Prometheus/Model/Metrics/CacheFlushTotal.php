@@ -50,7 +50,7 @@ class Littlemanco_Prometheus_Model_Metrics_CacheFlushTotal extends Littlemanco_P
                     self::S_METRIC_NAMESPACE,
                     self::S_METRIC_NAME,
                     self::S_METRIC_HELP,
-                    [$sCounter]
+                    ['cache' => $sCounter]
             );
         }
 
@@ -65,6 +65,6 @@ class Littlemanco_Prometheus_Model_Metrics_CacheFlushTotal extends Littlemanco_P
     public function increment($sCache)
     {
         $this->getCounter($sCache)
-            ->inc([$sCache]);
+            ->inc(['cache' => $sCache]);
     }
 }
