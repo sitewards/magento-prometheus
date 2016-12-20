@@ -24,6 +24,8 @@
  */
 class Littlemanco_Prometheus_Model_Observer
 {
+    const S_INDEX_EVENT_PREFIX = 'after_reindex_process_';
+
     /**
      * Updates the cron model with the current timestamp
      *
@@ -44,5 +46,20 @@ class Littlemanco_Prometheus_Model_Observer
     public function checkpointCache(Varien_Event_Observer $oEvent)
     {
         Mage::getSingleton('littlemanco_prometheus/metrics_cacheFlushTotal')->increment($oEvent->getType());
+    }
+
+    /**
+     * Increments the number of times an indexer has been run. Should only be triggered to on mass-reindexes, regardless
+     * of whether they're triggererd through the admin panel.
+     *
+     * @param Varien_Event_Observer $oEvent
+     * @return void
+     */
+    public function checkpointIndex(Varien_Event_Observer $oEvent)
+    {
+        $sName = $oEvent->getEventName();
+        $sCode = str_replace(self::S_INDEX_EVENT_PREFIX, null, $sName);
+
+        Mage::getSingleton('littlemanco_prometheus/metrics_indexerReindexTotal')->increment($sCode);
     }
 }
