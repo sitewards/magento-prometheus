@@ -19,6 +19,10 @@
  * @license  apache-2.0
  */
 
+/**
+ * Defines an abstract model that other metrics should implement. Takes care of fetching the metrics resource; a
+ * singleton that all metrics should checkpoint to.
+ */
 class Littlemanco_Prometheus_Model_Metrics_Abstract
 {
     const S_METRIC_NAMESPACE = 'magento';

@@ -29,6 +29,9 @@ class Littlemanco_Prometheus_Model_Metrics_CronExecutionTimestamp extends Little
     const S_METRIC_NAME = 'cron_execution_timestamp';
     const S_METRIC_HELP = 'The unix timestamp of the last cron execution';
 
+    /**
+     * Creates the timestamp metric. No matter how many times it's called, it should update this singleton.
+     */
     public function __construct()
     {
         $this->getResource()
@@ -40,7 +43,7 @@ class Littlemanco_Prometheus_Model_Metrics_CronExecutionTimestamp extends Little
     }
 
     /**
-     * Sets the time for a given metric
+     * Updates the timestamp to the current time.
      */
     public function update()
     {
