@@ -31,30 +31,15 @@ class Littlemanco_Prometheus_Model_Metrics_CacheFlushTotal extends Littlemanco_P
 
     const S_XML_PATH_CACHE_TYPES = 'global/cache/types';
 
-    /**
-     * @var \Prometheus\CollectorRegistry[]
-     */
-    private $counters = [];
-
-    /**
-     * Lazy load a counter for the cache
-     *
-     * @param $sCounter
-     * @return \Prometheus\CollectorRegistry
-     */
-    private function getCounter($sCounter)
+    public function __construct()
     {
-        if (!array_key_exists($sCounter, $this->counters)) {
-            $this->counters[$sCounter] = $this->getResource()
-                ->registerCounter(
-                    self::S_METRIC_NAMESPACE,
-                    self::S_METRIC_NAME,
-                    self::S_METRIC_HELP,
-                    ['cache' => $sCounter]
+        $this->getResource()
+            ->registerCounter(
+                self::S_METRIC_NAMESPACE,
+                self::S_METRIC_NAME,
+                self::S_METRIC_HELP,
+                ['cache']
             );
-        }
-
-        return $this->counters[$sCounter];
     }
 
     /**
@@ -64,7 +49,8 @@ class Littlemanco_Prometheus_Model_Metrics_CacheFlushTotal extends Littlemanco_P
      */
     public function increment($sCache)
     {
-        $this->getCounter($sCache)
-            ->inc(['cache' => $sCache]);
+        $this->getResource()
+            ->getCounter(self::S_METRIC_NAMESPACE, self::S_METRIC_NAME)
+            ->inc([$sCache]);
     }
 }
