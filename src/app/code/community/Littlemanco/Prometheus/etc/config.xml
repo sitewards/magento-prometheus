@@ -133,7 +133,7 @@ limitations under the License.
                 <use>standard</use>
                 <args>
                     <module>Littlemanco_Prometheus</module>
-                    <frontName>healthz</frontName>
+                    <frontName>metrics</frontName>
                 </args>
             </littlemanco_prometheus>
         </routers>
