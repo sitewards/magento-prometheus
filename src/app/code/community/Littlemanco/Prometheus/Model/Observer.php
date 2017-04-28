@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright 2016 littleman.co
+ * Copyright 2017 littleman.co
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -30,22 +30,39 @@ class Littlemanco_Prometheus_Model_Observer
      * Updates the cron model with the current timestamp
      *
      * @param Varien_Event_Observer $oEvent is ignored, but type hinted here to be explicit
+     *
      * @return void
      */
     public function checkpointCron(Varien_Event_Observer $oEvent)
     {
-        Mage::getSingleton('littlemanco_prometheus/metrics_cronExecutionTimestamp')->update(now());
+        Mage::getModel('littlemanco_prometheus/metricFactory')
+            ->getGauge(
+                'cron_execution_timestamp',
+                [
+                    'metric_help' => 'The last time (in unix time) Cron was executed'
+                ]
+            )
+            ->update(now());
     }
 
     /**
      * Increments the number of times a cache has been flushed. Cache is determined based on the data in the event.
      *
      * @param Varien_Event_Observer $oEvent
+     *
      * @return void
      */
     public function checkpointCache(Varien_Event_Observer $oEvent)
     {
-        Mage::getSingleton('littlemanco_prometheus/metrics_cacheFlushTotal')->increment($oEvent->getType());
+        Mage::getModel('littlemanco_prometheus/metricFactory')
+            ->getCounter(
+                'cache_flush_total',
+                [
+                    'metric_help' => 'The total number of times the cache has been flushed.',
+                    'label_titles' => ['type']
+                ]
+            )
+            ->increment(1, [$oEvent->getType()]);
     }
 
     /**
@@ -53,6 +70,7 @@ class Littlemanco_Prometheus_Model_Observer
      * of whether they're triggererd through the admin panel.
      *
      * @param Varien_Event_Observer $oEvent
+     *
      * @return void
      */
     public function checkpointIndex(Varien_Event_Observer $oEvent)
@@ -60,6 +78,14 @@ class Littlemanco_Prometheus_Model_Observer
         $sName = $oEvent->getEvent()->getName();
         $sCode = str_replace(self::S_INDEX_EVENT_PREFIX, null, $sName);
 
-        Mage::getSingleton('littlemanco_prometheus/metrics_indexerReindexTotal')->increment($sCode);
+        Mage::getModel('littlemanco_prometheus/metricFactory')
+            ->getCounter(
+                'indexer_reindex_total',
+                [
+                    'metric_help' => 'The total number of times the index has been reset',
+                    'label_titles' => ['type']
+                ]
+            )
+            ->increment(1, [$sCode]);
     }
 }
