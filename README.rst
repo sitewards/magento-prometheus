@@ -128,10 +128,15 @@ your own custom events:
 In the observer class create a push-metric call utilizing the handy metric factory.
 
     public function checkpointCache(Varien_Event_Observer $oEvent) {
-        Mage::getModel('littlemanco_prometheus/metricFactory')
-                ->getCounter('<metric_name>', ['<Description of the metric>', ['<label>']])
-                ->increment(1, $oEvent->getType());
-        }
+       Mage::getModel('littlemanco_prometheus/metricFactory')
+            ->getCounter(
+                '<metric_name>',
+                [
+                    'metric_help' => '<Description of the metric>',
+                    'label_titles' => ['<label>']
+                ]
+            )
+            ->increment(1, [$oEvent->getType()]);
     }
 
 In the example above, replace ```<metric_name>``` with a sensible name like ```'cache_flush_total'``` that describes
