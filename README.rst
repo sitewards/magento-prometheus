@@ -57,6 +57,15 @@ Magento  Compatibility
 Installation
 ------------
 
+Requirements
+''''''''''''
+
+- PHP 
+- PHP APCu
+
+Steps
+'''''
+
 The recommended way of installing this extension is via Composer. If this is new to you, you can read more at the
 following URL:
 
