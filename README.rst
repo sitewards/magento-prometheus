@@ -102,21 +102,47 @@ That's no good! Create an issue, and I'll see about making it configurable.
 Extending
 ---------
 
-The extension is a thin wrapper around the PHP library. However, to create a new metric, create a class as follows:
+You can add custom metrics to Prometheus from your own code. To do so, fire events using the Magento event API.
+Specify a suitable event name and, if necessary, add an additional data like an identification string.
 
-::
-    Todo: That
+    Mage::dispatchEvent('namespace_extension_custom_event_name', ['name' => $this->sIdentificationString]);
 
-Metrics are singletons, and fetching a model twice will break. Fetch your singleton as follows:
+Create an extension in your Magento project that will take care of the metrics being send to Prometheus.
+Define an observer listening to all the events you want to track. You can listen to native Magento events or define
+your own custom events:
 
-::
-    Todo: That
+    // config.xml
+    <frontend>
+        <events>
+            <namespace_extension_event_name>
+                <observers>
+                    <namespace_extension_event_name>
+                        <class>Namespace_Extension_Model_Observer</class>
+                        <method>pushMetric</method>
+                    </namespace_extension_event_name>
+                </observers>
+            </sitewards_importer_step_process>
+        </events>
+    </frontend>
 
-When creating a metric, the following additional PHPDoc tags are useful:
+In the observer class create a push-metric call utilizing the handy metric factory.
 
-::
+    public function checkpointCache(Varien_Event_Observer $oEvent) {
+       Mage::getModel('littlemanco_prometheus/metricFactory')
+            ->getCounter(
+                '<metric_name>',
+                [
+                    'metric_help' => '<Description of the metric>',
+                    'label_titles' => ['<label>']
+                ]
+            )
+            ->increment(1, [$oEvent->getType()]);
+    }
 
-    @labels label_a,label_b | The labels that should be updated for this metric
+In the example above, replace ```<metric_name>``` with a sensible name like ```'cache_flush_total'``` that describes
+what is counted. Replace ```<Description of the metric>``` with a description that will help to understand the
+metric (e.g. 'The total number of times the cache has been flushed'). Change ```<label>``` to contain a sensible
+label for sorting in the prometheus data visualization.
 
 Ongoing Support
 ---------------
