@@ -105,11 +105,15 @@ Extending
 You can add custom metrics to Prometheus from your own code. To do so, fire events using the Magento event API.
 Specify a suitable event name and, if necessary, add an additional data like an identification string.
 
+::
+
     Mage::dispatchEvent('namespace_extension_custom_event_name', ['name' => $this->sIdentificationString]);
 
 Create an extension in your Magento project that will take care of the metrics being send to Prometheus.
 Define an observer listening to all the events you want to track. You can listen to native Magento events or define
 your own custom events:
+
+::
 
     // config.xml
     <frontend>
@@ -126,6 +130,8 @@ your own custom events:
     </frontend>
 
 In the observer class create a push-metric call utilizing the handy metric factory.
+
+::
 
     public function checkpointCache(Varien_Event_Observer $oEvent) {
        Mage::getModel('littlemanco_prometheus/metricFactory')
