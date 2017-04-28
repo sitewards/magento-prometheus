@@ -43,7 +43,7 @@ class Sitewards_Prometheus_Model_Observer
                     'metric_help'      => 'The last time (in unix time) Cron was executed'
                 ]
             )
-            ->update(now());
+            ->update(time());
     }
 
     /**
