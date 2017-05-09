@@ -1,2 +1,2 @@
-src/app/etc/modules/Littlemanco_Prometheus.xml app/etc/modules/Littlemanco_Prometheus.xml
-src/app/code/community/Littlemanco/Prometheus  app/code/community/Littlemanco/Prometheus
+src/app/etc/modules/Sitewards_Prometheus.xml app/etc/modules/Sitewards_Prometheus.xml
+src/app/code/community/Sitewards/Prometheus  app/code/community/Sitewards/Prometheus

@@ -19,6 +19,6 @@
  * @license  apache-2.0
  */
 
-class Littlemanco_Prometheus_Exception_InvalidConstructorArguments extends Exception
+class Sitewards_Prometheus_Exception_InvalidConstructorArguments extends Exception
 {
 }

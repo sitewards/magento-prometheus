@@ -22,7 +22,7 @@
 /**
  * Creates a metric of the type "counter"
  */
-class Littlemanco_Prometheus_Model_Metrics_Counter extends Littlemanco_Prometheus_Model_Metrics_Abstract
+class Sitewards_Prometheus_Model_Metrics_Counter extends Sitewards_Prometheus_Model_Metrics_Abstract
 {
     /**
      * Creates a metric of the type "counter"
@@ -30,7 +30,7 @@ class Littlemanco_Prometheus_Model_Metrics_Counter extends Littlemanco_Prometheu
      * @param array $aOptions An array of the form
      *                        [
      *                          'metric_name'  => The name of the metric. Of the format vendor_extension_process_type.
-     *                                            For example littlemanco_prometheus_apcu_total,
+     *                                            For example sitewards_prometheus_apcu_total,
      *                          'metric_help'  => The help text to provide some context on the metric for debugging
      *                          'label_titles' => [
      *                              'label_a',

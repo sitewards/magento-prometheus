@@ -22,9 +22,9 @@
 /**
  * Responsible for fetching constructed metrics from the Magento registry so their state can be modified.
  */
-class Littlemanco_Prometheus_Model_MetricFactory
+class Sitewards_Prometheus_Model_MetricFactory
 {
-    const S_REGISTRY_PREFIX = 'littlemanco_prometheus_metric_';
+    const S_REGISTRY_PREFIX = 'sitewards_prometheus_metric_';
 
     /**
      * Fetches the counter instance of a given metric, constructing it if it does not exist
@@ -38,11 +38,11 @@ class Littlemanco_Prometheus_Model_MetricFactory
      *                          ]
      *                      ]
      *
-     * @return Littlemanco_Prometheus_Model_Metrics_Counter
+     * @return Sitewards_Prometheus_Model_Metrics_Counter
      */
     public function getCounter($sName, $aArgs = [])
     {
-        return $this->_getInstance(Littlemanco_Prometheus_Model_Metrics_Abstract::S_TYPE_COUNTER, $sName, $aArgs);
+        return $this->_getInstance(Sitewards_Prometheus_Model_Metrics_Abstract::S_TYPE_COUNTER, $sName, $aArgs);
     }
 
     /**
@@ -57,11 +57,11 @@ class Littlemanco_Prometheus_Model_MetricFactory
      *                          ]
      *                      ]
      *
-     * @return Littlemanco_Prometheus_Model_Metrics_Gauge
+     * @return Sitewards_Prometheus_Model_Metrics_Gauge
      */
     public function getGauge($sName, $aArgs = [])
     {
-        return $this->_getInstance(Littlemanco_Prometheus_Model_Metrics_Abstract::S_TYPE_GAUGE, $sName, $aArgs);
+        return $this->_getInstance(Sitewards_Prometheus_Model_Metrics_Abstract::S_TYPE_GAUGE, $sName, $aArgs);
     }
 
     /**
@@ -78,15 +78,15 @@ class Littlemanco_Prometheus_Model_MetricFactory
      *                                    ]
      *                                ]
      *
-     * @return Littlemanco_Prometheus_Model_Metrics_Abstract
-     * @throws Littlemanco_Prometheus_Exception_InvalidMetricType if the metric type is not one that can be used
+     * @return Sitewards_Prometheus_Model_Metrics_Abstract
+     * @throws Sitewards_Prometheus_Exception_InvalidMetricType if the metric type is not one that can be used
      */
     private function _getInstance($sType, $sName, array $aAdditionalArgs = [])
     {
         $sRegistryKey = self::S_REGISTRY_PREFIX . $sName;
 
 
-        /** @var Littlemanco_Prometheus_Model_Metrics_Abstract $oObject */
+        /** @var Sitewards_Prometheus_Model_Metrics_Abstract $oObject */
         $oObject = Mage::registry($sRegistryKey);
 
         if ($oObject) {
@@ -99,14 +99,14 @@ class Littlemanco_Prometheus_Model_MetricFactory
 
         // If the object does not exist, construct it and persist it
         switch ($sType) {
-            case Littlemanco_Prometheus_Model_Metrics_Abstract::S_TYPE_GAUGE:
-                $oObject = Mage::getModel('littlemanco_prometheus/metrics_gauge', $aArgs);
+            case Sitewards_Prometheus_Model_Metrics_Abstract::S_TYPE_GAUGE:
+                $oObject = Mage::getModel('sitewards_prometheus/metrics_gauge', $aArgs);
                 break;
-            case Littlemanco_Prometheus_Model_Metrics_Abstract::S_TYPE_COUNTER:
-                $oObject = Mage::getModel('littlemanco_prometheus/metrics_counter', $aArgs);
+            case Sitewards_Prometheus_Model_Metrics_Abstract::S_TYPE_COUNTER:
+                $oObject = Mage::getModel('sitewards_prometheus/metrics_counter', $aArgs);
                 break;
             default:
-                throw new Littlemanco_Prometheus_Exception_InvalidMetricType($sType);
+                throw new Sitewards_Prometheus_Exception_InvalidMetricType($sType);
         }
 
 

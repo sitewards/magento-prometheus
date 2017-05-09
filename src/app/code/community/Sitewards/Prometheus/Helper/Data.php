@@ -19,19 +19,7 @@
  * @license  apache-2.0
  */
 
-class Littlemanco_Prometheus_Exception_InvalidMetricType extends Exception
+class Sitewards_Prometheus_Helper_Data extends Mage_Core_Helper_Abstract
 {
-    /**
-     * Modifies the message such that it is more descriptive when rendered
-     *
-     * @param string         $sMetricType
-     * @param int            $iCode
-     * @param Exception|null $mPrevious
-     */
-    public function __construct($sMetricType, $iCode = 0, Exception $mPrevious = null)
-    {
-        $sMessage = sprintf('Metric type "%s" does not exist', $sMetricType);
 
-        parent::__construct($sMessage, $iCode, $mPrevious);
-    }
 }

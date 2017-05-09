@@ -23,7 +23,7 @@
  * Defines an abstract model that other metrics should implement. Takes care of fetching the metrics resource; a
  * singleton that all metrics should checkpoint to.
  */
-abstract class Littlemanco_Prometheus_Model_Metrics_Abstract
+abstract class Sitewards_Prometheus_Model_Metrics_Abstract
 {
     const S_ARG_KEY_METRIC_NAME  = 'metric_name';
     const S_ARG_KEY_METRIC_HELP  = 'metric_help';
@@ -44,7 +44,7 @@ abstract class Littlemanco_Prometheus_Model_Metrics_Abstract
      *
      * @param array $aArgs
      *
-     * @throws Littlemanco_Prometheus_Exception_InvalidConstructorArguments if the arguments ars not as expected
+     * @throws Sitewards_Prometheus_Exception_InvalidConstructorArguments if the arguments ars not as expected
      */
     protected function _checkArgs(array $aArgs)
     {
@@ -56,7 +56,7 @@ abstract class Littlemanco_Prometheus_Model_Metrics_Abstract
 
         foreach ($aArgKeys as $sKey) {
             if (!array_key_exists($sKey, $aArgs)) {
-                throw new Littlemanco_Prometheus_Exception_InvalidConstructorArguments();
+                throw new Sitewards_Prometheus_Exception_InvalidConstructorArguments();
             }
         }
     }
@@ -66,6 +66,6 @@ abstract class Littlemanco_Prometheus_Model_Metrics_Abstract
      */
     protected function getResource()
     {
-        return Mage::getResourceSingleton('littlemanco_prometheus/metrics');
+        return Mage::getResourceSingleton('sitewards_prometheus/metrics');
     }
 }

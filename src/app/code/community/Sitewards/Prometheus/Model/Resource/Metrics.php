@@ -19,23 +19,29 @@
  * @license  apache-2.0
  */
 
-use Prometheus\RenderTextFormat;
+use Prometheus\CollectorRegistry;
+use Prometheus\Storage\APC;
 
-class Littlemanco_Prometheus_IndexController extends Mage_Core_Controller_Front_Action
+/**
+ * @todo: Implement conditional resource models based on configuration. Redis is super common in Magento, there's no
+ * reason we can't persist there also.
+ *
+ * Not a high priority.
+ */
+class Sitewards_Prometheus_Model_Resource_Metrics extends CollectorRegistry
 {
     /**
-     * Renders the Magento metrics
-     *
-     * @todo: Render the text or HTML version depending on the request headers
+     * @var Prometheus\Storage\Adapter
      */
-    public function indexAction()
-    {
-        /** @var Littlemanco_Prometheus_Model_Resource_Metrics $oResourceModel */
-        $oResourceModel = Mage::getResourceSingleton('littlemanco_prometheus/metrics');
+    private $oStorageAdapter;
 
-        $oRenderer = new RenderTextFormat();
-        $sContent = $oRenderer->render($oResourceModel->getMetricFamilySamples());
-        $this->getResponse()->setBody($sContent);
-        $this->getResponse()->setHeader('Content-type', RenderTextFormat::MIME_TYPE);
+    /**
+     * Initialize the resource model with a metric adapter
+     */
+    public function __construct()
+    {
+        $this->oStorageAdapter = new APC();
+
+        parent::__construct($this->oStorageAdapter);
     }
 }
