@@ -1,9 +1,9 @@
 {
-    "name": "littlemanco/magento-prometheus",
+    "name": "sitewards/magento-prometheus",
     "description": "Expose some service level Magento metrics on Prometheus",
     "version": "1.0.0",
     "type": "magento-module",
-    "homepage": "https://github.com/littlemanco/magento-prometheus/",
+    "homepage": "https://github.com/sitewards/magento-prometheus/",
     "license": "Apache-2.0",
     "authors": [
         {
@@ -15,9 +15,9 @@
     ],
     "support": {
         "email": "hello@andrewhowden.com",
-        "issues": "https://github.com/littlemanco/magento-prometheus/issues",
-        "wiki": "https://github.com/littlemanco/magento-prometheus/wiki",
-        "source": "https://github.com/littlemanco/magento-prometheus"
+        "issues": "https://github.com/sitewards/magento-prometheus/issues",
+        "wiki": "https://github.com/sitewards/magento-prometheus/wiki",
+        "source": "https://github.com/sitewards/magento-prometheus"
     }, 
     "require": {
         "jimdo/prometheus_client_php": "v0.7.0"
@@ -29,7 +29,7 @@
     },
     "autoload": {
         "psr-4": {
-            "littlemanco\\": "src/"
+            "sitewards\\": "src/"
         }
     },
     "archive": {

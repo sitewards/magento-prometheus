@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!--
-Copyright 2016 littleman.co
+Copyright 2017 www.sitewards.com
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -14,30 +14,30 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-@category Littlemanco
-@package  Littlemanco_Prometheus
+@category Sitewards
+@package  Sitewards_Prometheus
 @license  apache-2.0
 -->
 <config>
     <modules>
-        <Littlemanco_Prometheus>
+        <Sitewards_Prometheus>
             <version>1.0.0</version>
-        </Littlemanco_Prometheus>
+        </Sitewards_Prometheus>
     </modules>
     <global>
         <models>
-            <littlemanco_prometheus>
-                <class>Littlemanco_Prometheus_Model</class>
-                <resourceModel>littlemanco_prometheus_resource</resourceModel>
-            </littlemanco_prometheus>
-            <littlemanco_prometheus_resource>
-                <class>Littlemanco_Prometheus_Model_Resource</class>
-            </littlemanco_prometheus_resource>
+            <sitewards_prometheus>
+                <class>Sitewards_Prometheus_Model</class>
+                <resourceModel>sitewards_prometheus_resource</resourceModel>
+            </sitewards_prometheus>
+            <sitewards_prometheus_resource>
+                <class>Sitewards_Prometheus_Model_Resource</class>
+            </sitewards_prometheus_resource>
         </models>
         <helpers>
-            <littlemanco_prometheus>
-                <class>Littlemanco_Prometheus_Helper</class>
-            </littlemanco_prometheus>
+            <sitewards_prometheus>
+                <class>Sitewards_Prometheus_Helper</class>
+            </sitewards_prometheus>
         </helpers>
     </global>
     <adminhtml>
@@ -46,7 +46,7 @@ limitations under the License.
             <adminhtml_cache_refresh_type>
                 <observers>
                     <metric_adminhtml_cache_refresh_type>
-                        <class>littlemanco_prometheus/observer</class>
+                        <class>sitewards_prometheus/observer</class>
                         <method>checkpointCache</method>
                     </metric_adminhtml_cache_refresh_type>
                 </observers>
@@ -56,7 +56,7 @@ limitations under the License.
             <after_reindex_process_catalog_product_attribute>
                 <observers>
                     <metric_after_reindex_process_catalog_product_attribute>
-                        <class>littlemanco_prometheus/observer</class>
+                        <class>sitewards_prometheus/observer</class>
                         <method>checkpointIndex</method>
                     </metric_after_reindex_process_catalog_product_attribute>
                 </observers>
@@ -64,7 +64,7 @@ limitations under the License.
             <after_reindex_process_catalog_product_price>
                 <observers>
                     <metric_after_reindex_process_catalog_product_price>
-                        <class>littlemanco_prometheus/observer</class>
+                        <class>sitewards_prometheus/observer</class>
                         <method>checkpointIndex</method>
                     </metric_after_reindex_process_catalog_product_price>
                 </observers>
@@ -72,7 +72,7 @@ limitations under the License.
             <after_reindex_process_catalog_url>
                 <observers>
                     <metric_after_reindex_process_catalog_url>
-                        <class>littlemanco_prometheus/observer</class>
+                        <class>sitewards_prometheus/observer</class>
                         <method>checkpointIndex</method>
                     </metric_after_reindex_process_catalog_url>
                 </observers>
@@ -80,7 +80,7 @@ limitations under the License.
             <after_reindex_process_catalog_product_flat>
                 <observers>
                     <metric_after_reindex_process_catalog_product_flat>
-                        <class>littlemanco_prometheus/observer</class>
+                        <class>sitewards_prometheus/observer</class>
                         <method>checkpointIndex</method>
                     </metric_after_reindex_process_catalog_product_flat>
                 </observers>
@@ -88,7 +88,7 @@ limitations under the License.
             <after_reindex_process_catalog_category_flat>
                 <observers>
                     <metric_after_reindex_process_catalog_category_flat>
-                        <class>littlemanco_prometheus/observer</class>
+                        <class>sitewards_prometheus/observer</class>
                         <method>checkpointIndex</method>
                     </metric_after_reindex_process_catalog_category_flat>
                 </observers>
@@ -96,7 +96,7 @@ limitations under the License.
             <after_reindex_process_catalog_category_product>
                 <observers>
                     <metric_after_reindex_process_catalog_category_product>
-                        <class>littlemanco_prometheus/observer</class>
+                        <class>sitewards_prometheus/observer</class>
                         <method>checkpointIndex</method>
                     </metric_after_reindex_process_catalog_category_product>
                 </observers>
@@ -104,7 +104,7 @@ limitations under the License.
             <after_reindex_process_catalogsearch_fulltext>
                 <observers>
                     <metric_after_reindex_process_catalogsearch_fulltext>
-                        <class>littlemanco_prometheus/observer</class>
+                        <class>sitewards_prometheus/observer</class>
                         <method>checkpointIndex</method>
                     </metric_after_reindex_process_catalogsearch_fulltext>
                 </observers>
@@ -112,7 +112,7 @@ limitations under the License.
             <after_reindex_process_cataloginventory_stock>
                 <observers>
                     <metric_after_reindex_process_cataloginventory_stock>
-                        <class>littlemanco_prometheus/observer</class>
+                        <class>sitewards_prometheus/observer</class>
                         <method>checkpointIndex</method>
                     </metric_after_reindex_process_cataloginventory_stock>
                 </observers>
@@ -120,7 +120,7 @@ limitations under the License.
             <after_reindex_process_tag_summary>
                 <observers>
                     <metric_after_reindex_process_tag_summary>
-                        <class>littlemanco_prometheus/observer</class>
+                        <class>sitewards_prometheus/observer</class>
                         <method>checkpointIndex</method>
                     </metric_after_reindex_process_tag_summary>
                 </observers>
@@ -129,13 +129,13 @@ limitations under the License.
     </adminhtml>
     <frontend>
         <routers>
-            <littlemanco_prometheus>
+            <sitewards_prometheus>
                 <use>standard</use>
                 <args>
-                    <module>Littlemanco_Prometheus</module>
+                    <module>Sitewards_Prometheus</module>
                     <frontName>metrics</frontName>
                 </args>
-            </littlemanco_prometheus>
+            </sitewards_prometheus>
         </routers>
     </frontend>
     <crontab>
@@ -143,7 +143,7 @@ limitations under the License.
             <default>
                 <observers>
                     <cron_observer>
-                        <class>littlemanco_prometheus/observer</class>
+                        <class>sitewards_prometheus/observer</class>
                         <method>checkpointCron</method>
                     </cron_observer>
                 </observers>
@@ -151,7 +151,7 @@ limitations under the License.
             <always>
                 <observers>
                     <cron_observer>
-                        <class>littlemanco_prometheus/observer</class>
+                        <class>sitewards_prometheus/observer</class>
                         <method>checkpointCron</method>
                     </cron_observer>
                 </observers>

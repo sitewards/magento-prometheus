@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright 2016 littleman.co
+ * Copyright 2017 www.sitewards.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,14 +14,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @category Littlemanco
- * @package  Littlemanco_Prometheus
+ * @category Sitewards
+ * @package  Sitewards_Prometheus
  * @license  apache-2.0
  */
 
 use Prometheus\RenderTextFormat;
 
-class Littlemanco_Prometheus_IndexController extends Mage_Core_Controller_Front_Action
+class Sitewards_Prometheus_IndexController extends Mage_Core_Controller_Front_Action
 {
     /**
      * Renders the Magento metrics
@@ -30,8 +30,8 @@ class Littlemanco_Prometheus_IndexController extends Mage_Core_Controller_Front_
      */
     public function indexAction()
     {
-        /** @var Littlemanco_Prometheus_Model_Resource_Metrics $oResourceModel */
-        $oResourceModel = Mage::getResourceSingleton('littlemanco_prometheus/metrics');
+        /** @var Sitewards_Prometheus_Model_Resource_Metrics $oResourceModel */
+        $oResourceModel = Mage::getResourceSingleton('sitewards_prometheus/metrics');
 
         $oRenderer = new RenderTextFormat();
         $sContent = $oRenderer->render($oResourceModel->getMetricFamilySamples());

@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright 2017 littleman.co
+ * Copyright 2017 www.sitewards.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,23 +14,23 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @category Littlemanco
- * @package  Littlemanco_Prometheus
+ * @category Sitewards
+ * @package  Sitewards_Prometheus
  * @license  apache-2.0
  */
 
 /**
- * Creates a metric of the type "gauge"
+ * Creates a metric of the type "counter"
  */
-class Littlemanco_Prometheus_Model_Metrics_Gauge extends Littlemanco_Prometheus_Model_Metrics_Abstract
+class Sitewards_Prometheus_Model_Metrics_Counter extends Sitewards_Prometheus_Model_Metrics_Abstract
 {
     /**
-     * Creates a metric of the type "gauge"
+     * Creates a metric of the type "counter"
      *
      * @param array $aOptions An array of the form
      *                        [
      *                          'metric_name'  => The name of the metric. Of the format vendor_extension_process_type.
-     *                                            For example littlemanco_prometheus_apcu_total,
+     *                                            For example sitewards_prometheus_apcu_total,
      *                          'metric_help'  => The help text to provide some context on the metric for debugging
      *                          'label_titles' => [
      *                              'label_a',
@@ -47,7 +47,7 @@ class Littlemanco_Prometheus_Model_Metrics_Gauge extends Littlemanco_Prometheus_
         $this->aLabelTitles = $aOptions[self::S_ARG_KEY_LABEL_TITLES];
 
         $this->getResource()
-            ->registerGauge(
+            ->registerCounter(
                 self::S_METRIC_NAMESPACE,
                 $this->sMetricName,
                 $this->sMetricHelp,
@@ -56,15 +56,16 @@ class Littlemanco_Prometheus_Model_Metrics_Gauge extends Littlemanco_Prometheus_
     }
 
     /**
-     * Updates the gauge to an arbitrary numeric value.
+     * Updates the counter by some amount
      *
-     * @param float $fValue        The value of $this->sMetricName at the time this is called.
-     * @param array $aLabelValues  The values for the previously defined labels
+     * @param integer $iValue        The amount to increment this counter by. Defaults to 1 so single items can be
+     *                               easily checkpointed
+     * @param array   $aLabelValues s The values for the previously defined labels
      */
-    public function update($fValue, array $aLabelValues = [])
+    public function increment($iValue = 1, $aLabelValues = [])
     {
         $this->getResource()
-            ->getGauge(self::S_METRIC_NAMESPACE, $this->sMetricName)
-            ->set($fValue, $aLabelValues);
+            ->getCounter(self::S_METRIC_NAMESPACE, $this->sMetricName)
+            ->incBy($iValue, $aLabelValues);
     }
 }

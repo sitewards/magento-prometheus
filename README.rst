@@ -27,13 +27,6 @@ With more recent developments in infrastructure, such as Kubernetes, Docker, Pro
 Limitations
 '''''''''''
 
-Note: This list also constitutes a "Todo"
-
-- This doesn't work yet.
-
-CVRFv1.1 ATOM Feed: https://feeds.littleman.co/security/magento/prometheus.atom _[FIG9]
-JSON: https://feeds.littleman.co/security/magento/prometheus.json _[FIG9]
-
 Summary
 '''''''
 
@@ -75,7 +68,7 @@ This extension is available via Packagist. You can install it with composer by u
 
 ::
 
-    $ composer require littlemanco/magento-prometheus
+    $ composer require sitewards/magento-prometheus
 
 Note: To use it, you will need to ensure that the composer autoloader is available to Magento. This package recommends
 the following extension to do this:

@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright 2017 littleman.co
+ * Copyright 2017 www.sitewards.com
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -14,12 +14,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
- * @category Littlemanco
- * @package  Littlemanco_Prometheus
+ * @category Sitewards
+ * @package  Sitewards_Prometheus
  * @license  apache-2.0
  */
 
-class Littlemanco_Prometheus_Exception_InvalidMetricType extends Exception
+class Sitewards_Prometheus_Exception_InvalidMetricType extends Exception
 {
     /**
      * Modifies the message such that it is more descriptive when rendered
