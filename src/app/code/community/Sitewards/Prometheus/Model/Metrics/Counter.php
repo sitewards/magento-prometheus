@@ -29,26 +29,28 @@ class Sitewards_Prometheus_Model_Metrics_Counter extends Sitewards_Prometheus_Mo
      *
      * @param array $aOptions An array of the form
      *                        [
-     *                          'metric_name'  => The name of the metric. Of the format vendor_extension_process_type.
-     *                                            For example sitewards_prometheus_apcu_total,
-     *                          'metric_help'  => The help text to provide some context on the metric for debugging
-     *                          'label_titles' => [
+     *                          'metric_namespace' => The module name. For example, sitewards_prometheus
+     *                          'metric_name'      => The name of the metric. Of the format process_type. For example
+     *                                                apcu_total
+     *                          'metric_help'      => The help text to provide some context on the metric for debugging
+     *                          'label_titles'     => [
      *                              'label_a',
      *                              'label_b'
      *                           ]
      *                        ]
      */
-    public function __construct($aOptions)
+    public function __construct(array $aOptions)
     {
         $this->_checkArgs($aOptions);
 
-        $this->sMetricName  = $aOptions[self::S_ARG_KEY_METRIC_NAME];
-        $this->sMetricHelp  = $aOptions[self::S_ARG_KEY_METRIC_HELP];
-        $this->aLabelTitles = $aOptions[self::S_ARG_KEY_LABEL_TITLES];
+        $this->sMetricNamespace = $aOptions[self::S_ARG_KEY_METRIC_NAMESPACE];
+        $this->sMetricName      = $aOptions[self::S_ARG_KEY_METRIC_NAME];
+        $this->sMetricHelp      = $aOptions[self::S_ARG_KEY_METRIC_HELP];
+        $this->aLabelTitles     = $aOptions[self::S_ARG_KEY_LABEL_TITLES];
 
         $this->getResource()
             ->registerCounter(
-                self::S_METRIC_NAMESPACE,
+                $this->sMetricNamespace,
                 $this->sMetricName,
                 $this->sMetricHelp,
                 $this->aLabelTitles
@@ -65,7 +67,7 @@ class Sitewards_Prometheus_Model_Metrics_Counter extends Sitewards_Prometheus_Mo
     public function increment($iValue = 1, $aLabelValues = [])
     {
         $this->getResource()
-            ->getCounter(self::S_METRIC_NAMESPACE, $this->sMetricName)
+            ->getCounter($this->sMetricNamespace, $this->sMetricName)
             ->incBy($iValue, $aLabelValues);
     }
 }
