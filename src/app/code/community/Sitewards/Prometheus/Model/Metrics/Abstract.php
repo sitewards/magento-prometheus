@@ -25,18 +25,52 @@
  */
 abstract class Sitewards_Prometheus_Model_Metrics_Abstract
 {
-    const S_ARG_KEY_METRIC_NAME  = 'metric_name';
-    const S_ARG_KEY_METRIC_HELP  = 'metric_help';
-    const S_ARG_KEY_LABEL_TITLES = 'label_titles';
-
-    const S_METRIC_NAMESPACE = 'magento';
+    const S_ARG_KEY_METRIC_NAME      = 'metric_name';
+    const S_ARG_KEY_METRIC_HELP      = 'metric_help';
+    const S_ARG_KEY_LABEL_TITLES     = 'label_titles';
+    const S_ARG_KEY_METRIC_NAMESPACE = 'metric_namespace';
 
     const S_TYPE_GAUGE   = 'gauge';
     const S_TYPE_COUNTER = 'counter';
 
-    protected $sMetricType  = '';
-    protected $sMetricName  = '';
-    protected $sMetricHelp  = '';
+    /**
+     * The metric type. Can be one of:
+     *
+     * - Gauge
+     * - Counter
+     *
+     * @var string
+     */
+    protected $sMetricType = '';
+
+    /**
+     * The name of the metric. Should be a short descriptive string, of the form "foo_bar". Check out
+     * https://prometheus.io/docs/practices/naming/ for details on naming metrics.
+     *
+     * @var string
+     */
+    protected $sMetricName = '';
+
+    /**
+     * A text description that indicates what the metric represents
+     *
+     * @var string
+     */
+    protected $sMetricHelp = '';
+
+    /**
+     * The library that is exposing the metrics. Use the module name; for example, "sitewards_prometheus"
+     *
+     * @var string
+     */
+    protected $sMetricNamespace = '';
+
+    /**
+     * Labels that are being applied to the metric. Check out
+     * https://prometheus.io/docs/practices/naming/ for details on labels.
+     *
+     * @var array
+     */
     protected $aLabelTitles = [];
 
     /**
@@ -49,6 +83,7 @@ abstract class Sitewards_Prometheus_Model_Metrics_Abstract
     protected function _checkArgs(array $aArgs)
     {
         $aArgKeys = [
+            self::S_ARG_KEY_METRIC_NAMESPACE,
             self::S_ARG_KEY_METRIC_NAME,
             self::S_ARG_KEY_METRIC_HELP,
             self::S_ARG_KEY_LABEL_TITLES

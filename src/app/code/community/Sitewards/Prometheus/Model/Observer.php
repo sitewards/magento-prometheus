@@ -37,9 +37,10 @@ class Sitewards_Prometheus_Model_Observer
     {
         Mage::getModel('sitewards_prometheus/metricFactory')
             ->getGauge(
-                'cron_execution_timestamp',
+                'execution_timestamp',
                 [
-                    'metric_help' => 'The last time (in unix time) Cron was executed'
+                    'metric_namespace' => 'mage_cron',
+                    'metric_help'      => 'The last time (in unix time) Cron was executed'
                 ]
             )
             ->update(now());
@@ -56,10 +57,11 @@ class Sitewards_Prometheus_Model_Observer
     {
         Mage::getModel('sitewards_prometheus/metricFactory')
             ->getCounter(
-                'cache_flush_total',
+                'flush_total',
                 [
-                    'metric_help' => 'The total number of times the cache has been flushed.',
-                    'label_titles' => ['type']
+                    'metric_namespace' => 'mage_cache',
+                    'metric_help'      => 'The total number of times the cache has been flushed.',
+                    'label_titles'     => ['type']
                 ]
             )
             ->increment(1, [$oEvent->getType()]);
@@ -80,10 +82,11 @@ class Sitewards_Prometheus_Model_Observer
 
         Mage::getModel('sitewards_prometheus/metricFactory')
             ->getCounter(
-                'indexer_reindex_total',
+                'reindex_total',
                 [
-                    'metric_help' => 'The total number of times the index has been reset',
-                    'label_titles' => ['type']
+                    'metric_namespace' => 'mage_indexer',
+                    'metric_help'      => 'The total number of times the index has been reset',
+                    'label_titles'     => ['type']
                 ]
             )
             ->increment(1, [$sCode]);

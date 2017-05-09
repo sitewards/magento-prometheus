@@ -131,6 +131,7 @@ In the observer class create a push-metric call utilizing the handy metric facto
             ->getCounter(
                 '<metric_name>',
                 [
+                    'metric_namespace' => '<vendor_extension>,'
                     'metric_help' => '<Description of the metric>',
                     'label_titles' => ['<label>']
                 ]
